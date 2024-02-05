@@ -45,24 +45,20 @@ const App = () => {
   };
 
   const handleSort = (column: string) => {
-    // Toggle sort direction for the next click or toggle between asc and desc for the same column
     setSortDirection((prevDirection) => (prevDirection === "asc" ? "desc" : "asc"));
     setSortColumn(column);
   };
 
   const filterAndSortData = () => {
     let filteredData = jsonData || [];
-
     if (globalSearch) {
       filteredData = filteredData.filter((item) =>
         Object.values(item).some((value) => {
           const lowerCaseValue = String(value).toLowerCase();
-
           return lowerCaseValue.includes(globalSearch.toLowerCase());
         })
       );
     }
-
     if (Object.keys(filters).length > 0) {
       filteredData = filteredData.filter((item) => {
         return Object.keys(filters).every((key) => {
@@ -79,7 +75,6 @@ const App = () => {
       filteredData.sort((a, b) => {
         const aValue = a[sortColumn];
         const bValue = b[sortColumn];
-
         const isANumeric = !isNaN(parseFloat(aValue)) && isFinite(parseFloat(aValue));
         const isBNumeric = !isNaN(parseFloat(bValue)) && isFinite(parseFloat(bValue));
 
@@ -113,9 +108,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
-        {/* ... (Navbar content) */}
-      </Navbar>
+      <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark"></Navbar>
       <Container className="mt-4">
         <Row>
           <Col lg={12}>
