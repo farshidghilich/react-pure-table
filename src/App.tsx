@@ -105,7 +105,10 @@ const App = () => {
 
     return Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
   };
-
+  useEffect(() => {
+    // Reset filters when jsonData changes
+    setFilters({});
+  }, [jsonData]);
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark"></Navbar>
